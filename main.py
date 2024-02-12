@@ -7,10 +7,14 @@ app = Flask('app')
 
 def cruserdict(password):
   return {
+    'days w/o smoking':0,
     'password':password
   }
-
 users = json.loads(db.get_raw('users'))
+def save():
+  global users
+  users = json.loads(db.get_raw('users'))
+  
 @app.route('/')
 def hello_world():
   return render_template('index.html')
@@ -38,10 +42,12 @@ def signup():
       return 'Username already exists'
     else:
       db['users'][username] = cruserdict(password)
+      save()
       return 'Account created'
   return render_template('signup.html')
 
-@app.route('/user', methods=['GET'])
-def userpage():
-  return render_template('user.html')
+@app.route('/user/<uname>', methods=['GET'])
+def userpage(uname):
+  return render_template('user.html', data=users[uname], uname=uname)
+  
 app.run(host='0.0.0.0', port=8080)
