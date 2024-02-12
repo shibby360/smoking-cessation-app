@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import os
 from replit import db
 import json
@@ -25,8 +25,8 @@ def login():
     username = request.form['username']
     password = request.form['password']
     if username in users:
-      if users[username] == password:
-        return render_template('login.html', username=username)
+      if users[username]['password'] == password:
+        return redirect('/user/'+ username)
       else:
         return 'Invalid password'
     else:
@@ -43,7 +43,7 @@ def signup():
     else:
       db['users'][username] = cruserdict(password)
       save()
-      return 'Account created'
+      return redirect('/user' + username)
   return render_template('signup.html')
 
 @app.route('/user/<uname>', methods=['GET'])
