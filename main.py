@@ -13,9 +13,9 @@ def cruserdict(password):
 users = json.loads(db.get_raw('users'))
 @app.route('/')
 def hello_world():
-  return 'Hello, World!'
+  return render_template('index.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
   if request.method == 'POST':
     username = request.form['username']
@@ -29,7 +29,7 @@ def login():
       return 'Invalid username'
   return render_template('login.html')
 
-@app.route('/signup')
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
   if request.method == 'POST':
     username = request.form['username']
@@ -40,5 +40,8 @@ def signup():
       db['users'][username] = cruserdict(password)
       return 'Account created'
   return render_template('signup.html')
-  
+
+@app.route('/user', methods=['GET'])
+def userpage():
+  return render_template('user.html')
 app.run(host='0.0.0.0', port=8080)
