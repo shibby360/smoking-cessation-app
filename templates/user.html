@@ -3,7 +3,7 @@
 {% block styles %}
 {% endblock %}
 {% block body %}
-<h1>{{ uname }}</h1>
+<h1 id='uname'>{{ uname }}</h1>
 <p>Days without smoking: {{ data['days w/o smoking'] }}</p>
 <p style="display: none" id='data'>{{ data }}</p>
 {% endblock %}
