@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
-{% block title %} {{ uname }} {% endblock %}
+{% block title %}{{ uname }}{% endblock %}
 {% block styles %}
 {% endblock %}
 {% block body %}
 <h1>{{ uname }}</h1>
+<p>Days without smoking: {{ data['days w/o smoking'] }}</p>
+<p style="display: none" id='data'>{{ data }}</p>
+{% endblock %}
+{% block scripts %}
 <script src='{{ url_for("static", filename="js/user.js") }}'></script>
 {% endblock %}
