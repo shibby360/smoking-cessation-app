@@ -3,3 +3,4 @@ pyproject.toml
 .upm/
 .replit
 .breakpoints
+ignoreddbfuncs.py
