@@ -51,5 +51,9 @@ def userpage(uname):
   datatopass = users[uname].copy().copy()
   del datatopass['password']
   return render_template('user.html', data=datatopass, uname=uname)
+
+@app.route('/play', methods=['GET'])
+def playpage():
+  return render_template('play.html')
   
 app.run(host='0.0.0.0', port=8080)
