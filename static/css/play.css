@@ -1,0 +1,40 @@
+:root {
+  --qwidth: 215px;
+}
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+@keyframes qin {
+  0% {
+    opacity: 0%;
+    left: calc(100% - var(--qwidth));
+  }
+  100% {
+    opacity: 100%;
+    left: calc(50% - calc(var(--qwidth) / 2));
+  }
+}
+@keyframes qout {
+  0% {
+    opacity: 100%;
+    left: calc(50% - calc(var(--qwidth) / 2));
+  }
+  100% {
+    opacity: 0%;
+    left: 0px;
+  }
+}
+.qin {
+  animation: qin 2s linear;
+}
+.qout {
+  animation: qout 2s linear;
+}
+question-el {
+  width: var(--qwidth);
+  display: none;
+  position: absolute;
+  top: 80px;
+}
