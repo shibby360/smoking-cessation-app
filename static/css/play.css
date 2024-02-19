@@ -1,5 +1,7 @@
 :root {
   --qwidth: 215px;
+  --qmovetime: 1s;
+  --poptime: 5s;
 }
 body {
   display: flex;
@@ -26,15 +28,35 @@ body {
     left: 0px;
   }
 }
+@keyframes popshow {
+  0% {
+    opacity: 0%;
+  }
+  12.5% {
+    opacity: 99%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  87.5% {
+    opacity: 99%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
 .qin {
-  animation: qin 2s linear;
+  animation: qin var(--qmovetime) linear;
 }
 .qout {
-  animation: qout 2s linear;
+  animation: qout var(--qmovetime) linear;
+}
+.popshow {
+  animation: popshow var(--poptime) linear;
 }
 question-el {
   width: var(--qwidth);
   display: none;
   position: absolute;
-  top: 80px;
+  top: 100px;
 }

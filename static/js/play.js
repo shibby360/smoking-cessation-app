@@ -1,3 +1,7 @@
+function getCSSVar(x) {
+  return getComputedStyle(document.documentElement).getPropertyValue(x)
+}
+/* cards */
 class cardEl extends HTMLElement {
   constructor() {
     super()
@@ -79,8 +83,8 @@ p {
     $(this.innerdiv).click()
   }
 }
-var qnumber = 1
-var qs = []
+customElements.define("card-el", cardEl)
+/* questions */
 class questionEl extends HTMLElement {
   constructor() {
     super()
@@ -142,22 +146,21 @@ class questionEl extends HTMLElement {
 <button id='smbt'>Submit</button>
 <!-- <card-el top="${this.getAttribute('question')}" bottom="${this.getAttribute('answer')}" width='500px' height='400px'><card-el> -->
     `)
-    var scripts = $('<script>')
-    scripts.html(``)
     shadow.appendChild(styles[0])
     shadow.appendChild(content[0])
-    shadow.appendChild(scripts[0])
     qs[this.getAttribute('index')-1] = this
     var useranswerinp = $(shadow.querySelector('#useranswer'))
     $(shadow.querySelector('#smbt')).click(function(ev) {
       if($(ev.target).text() == 'Submit') { 
         var useranswer = useranswerinp.val()
+        if(useranswerinp.val() == '') { return }
         var resultp = $(shadow.querySelector('#result'))
         useranswerinp.val('')
         if (useranswer == qs[qnumber-1].getAttribute('answer')) {
           resultp.text('correct!')
           resultp.css('color', 'green')
           useranswerinp.css('border', '2px solid green')
+          $('pop-up')[0].pop()
         } else {
           resultp.text('wrong...')
           resultp.css('color', 'red')
@@ -166,28 +169,63 @@ class questionEl extends HTMLElement {
         $(ev.target).text('Next')
       } else {
         qnumber++
-        console.log($('question-el[index='+(qnumber)+']'))
         $('question-el[index='+(qnumber)+']').addClass('qin')
         $('question-el[index='+(qnumber)+']').css('display', 'inline')
-        console.log('question-el[index='+(qnumber-1)+']')
         $('question-el[index='+(qnumber-1)+']').addClass('qout')
         moving = 1
         setTimeout(function() {
           $('question-el[index='+(qnumber-1)+']').removeClass('qout')
           $('question-el[index='+(qnumber-1)+']').css('display', 'none')
           moving = 0
-        }, 2000)
+        }, Number(getCSSVar('--qmovetime').replace(/\D/g, ''))*950)
       }
     })
   }
 }
+var qnumber = 1
+var qs = []
 var moving = 0
-customElements.define("card-el", cardEl)
 customElements.define('question-el', questionEl)
 $(`question-el[index="${qnumber}"]`).css('display', 'inline')
 $(document).on('keyup', function(ev) {
   if(ev.key == 'Enter' && !moving) {
-    console.log(`question-el[index="${qnumber}"]`)
     $($(`question-el[index="${qnumber}"]`)[0].shadowRoot.querySelector('#smbt')).click()
   }
 })
+/* popups */
+class popupEl extends HTMLElement {
+  constructor() {
+    super()
+  }
+  connectedCallback() {
+    var shadow = this.attachShadow({mode: 'open'})
+    var styles = $('<style>')
+    styles.html(`.popdiv {
+  display: none;
+  z-index: 200;
+  background-color: #c9c9c9;
+  padding-top: 0.5px;
+  padding-bottom: 0.5px;
+  padding-left: 27px;
+  padding-right: 27px;
+  font-size: 14px;
+  position: relative;
+}`)
+    var content = $(`<div class='popdiv'>`)
+    content.html(`
+<p>${this.innerHTML}</p>
+`)
+    shadow.appendChild(styles[0])
+    shadow.appendChild(content[0])
+  }
+  pop() {
+    $(this.shadowRoot.querySelector('.popdiv')).css('display', 'block')
+    $(this).addClass('popshow')
+    var popdiv = $(this.shadowRoot.querySelector('.popdiv'))
+    setTimeout(function() {
+      popdiv.css('display', 'none')
+      $(this).removeClass('popshow')
+    }, Number(getCSSVar('--poptime').replace(/\D/g, '') * 999))
+  }
+}
+customElements.define("pop-up", popupEl)
