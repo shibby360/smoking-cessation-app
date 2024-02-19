@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}{{ uname }}{% endblock %}
 {% block styles %}
+<link rel='stylesheet' href='{{ url_for("static", filename="css/user.css") }}' type='text/css'>
 {% endblock %}
 {% block body %}
 <h1 id='uname'>{{ uname }}</h1>
-<p>Days without smoking: {{ data['days w/o smoking'] }}</p>
+<div id='goaldiv'>
+  <p id='num'>{{ data['days w/o smoking'] }}</p>
+  <p>Days without smoking<br>Goal: {{ data['goal'] }}</p>
+</div>
 <p style="display: none" id='data'>{{ data }}</p>
 <a href='/play'>Play</a>
 {% endblock %}

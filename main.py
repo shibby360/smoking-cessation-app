@@ -11,6 +11,7 @@ def cruserdict(password):
     'password':password
   }
 users = json.loads(db.get_raw('users'))
+print(users)
 def save():
   global users
   users = json.loads(db.get_raw('users'))

@@ -1,0 +1,18 @@
+:root {
+  --goaldivsize: 155px;
+  --goalportion: 0deg;
+}
+#goaldiv {
+  background: linear-gradient(white, white) padding-box, conic-gradient(#ff5722 var(--goalportion), rgba(125,125,125,0.3) 0) border-box;
+  border-radius: 50em;
+  border: 8px solid transparent;
+  width: var(--goaldivsize);
+  height: var(--goaldivsize);
+}
+#goaldiv > p {
+  text-align: center;
+}
+#goaldiv > #num {
+  font-size: xx-large;
+  margin-bottom: 0;
+}
