@@ -56,5 +56,8 @@ def userpage(uname):
 @app.route('/play', methods=['GET'])
 def playpage():
   return render_template('play.html')
-  
+
+@app.route('/shop', methods=['GET'])
+def shoppage():
+  return render_template('shop.html')
 app.run(host='0.0.0.0', port=8080)

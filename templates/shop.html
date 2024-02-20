@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Shop{% endblock %}
+{% block styles %}
+<link rel='stylesheet' href='{{ url_for("static", filename="css/shop.css") }}' type='text/css'>
+{% endblock %}
+{% block body %}
+<shop-item cost='50' description='badge'>Badge</shop-item>
+{% endblock %}
+{% block scripts %}
+<script src='{{ url_for("static", filename="js/shop.js") }}'></script>
+{% endblock %}

@@ -1,7 +1,7 @@
 :root {
   --qwidth: 215px;
   --qmovetime: 1s;
-  --poptime: 5s;
+  --poptime: 3s;
 }
 body {
   display: flex;

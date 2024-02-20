@@ -10,7 +10,9 @@
   <p>Days without smoking<br>Goal: {{ data['goal'] }}</p>
 </div>
 <p style="display: none" id='data'>{{ data }}</p>
+<p>Points: {{ data['points'] }}</p>
 <a href='/play'>Play</a>
+<a href='/shop'>Shop</a>
 {% endblock %}
 {% block scripts %}
 <script src='{{ url_for("static", filename="js/user.js") }}'></script>
