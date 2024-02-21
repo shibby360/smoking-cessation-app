@@ -40,7 +40,7 @@ class cardEl extends HTMLElement {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 9px;
-  visibility: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -94,7 +94,7 @@ class questionEl extends HTMLElement {
     var styles = $('<style>')
     styles.html(`
 .fulldiv {
-  visibility: flex;
+  display: flex;
   align-items: center;
   flex-direction: column;
 }
