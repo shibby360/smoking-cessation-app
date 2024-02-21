@@ -14,10 +14,15 @@ class shopItem extends HTMLElement {
   border-radius: 10px;
   width: 140px;
   height: 185px;
+  transition: bottom 0.3s;
+  position: relative;
+  bottom: 0px;
 }
 .shopitem:hover {
   background-color: #b9b9b9;
   cursor: pointer;
+  position: relative;
+  bottom: 5px;
 }
 `)
     var content = $(`<div class='shopitem'>`)
@@ -27,9 +32,12 @@ class shopItem extends HTMLElement {
 <p>${this.getAttribute('cost')} points</p>`)
     shadow.appendChild(styles[0])
     shadow.appendChild(content[0])
+    var cost = Number(this.getAttribute('cost'))
     $(shadow.querySelector('.shopitem')).click(function(ev) {
-      console.log(ev)
+      userdata['points'] -= cost
+      savedata()
     })
   }
 }
 customElements.define('shop-item', shopItem)
+$('#points').text('Points: ' + userdata['points'])

@@ -4,7 +4,13 @@
 <link rel='stylesheet' href='{{ url_for("static", filename="css/shop.css") }}' type='text/css'>
 {% endblock %}
 {% block body %}
-<shop-item cost='50' description='badge'>Badge</shop-item>
+<h1>Shop</h1>
+<p id='points'></p>
+<div id='shopitems'>
+  <shop-item cost='25' description='worse badge'>badeg</shop-item>
+  <shop-item cost='50' description='badge'>Badge</shop-item>
+</div>
+<a id='backbtn'>Go back</a>
 {% endblock %}
 {% block scripts %}
 <script src='{{ url_for("static", filename="js/shop.js") }}'></script>

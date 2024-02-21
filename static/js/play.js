@@ -161,6 +161,8 @@ class questionEl extends HTMLElement {
           resultp.css('color', 'green')
           useranswerinp.css('border', '2px solid green')
           $('pop-up')[0].pop()
+          userdata['points'] += 10
+          savedata()
         } else {
           resultp.text('wrong...')
           resultp.css('color', 'red')

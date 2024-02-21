@@ -60,4 +60,15 @@ def playpage():
 @app.route('/shop', methods=['GET'])
 def shoppage():
   return render_template('shop.html')
+
+@app.route('/save', methods=['POST'])
+def savepage():
+  data = request.json
+  uname = data['uname']
+  data['password'] = db['users'][uname]['password']
+  del data['uname']
+  db['users'][uname] = data
+  save()
+  print(db['users'][uname])
+  return 'saved'
 app.run(host='0.0.0.0', port=8080)
