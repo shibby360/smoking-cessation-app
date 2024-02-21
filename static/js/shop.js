@@ -35,6 +35,7 @@ class shopItem extends HTMLElement {
     var cost = Number(this.getAttribute('cost'))
     $(shadow.querySelector('.shopitem')).click(function(ev) {
       userdata['points'] -= cost
+      userdata['items'].push(ev.target.getAttribute('sid'))
       savedata()
     })
   }

@@ -47,7 +47,7 @@ def signup():
     else:
       db['users'][username] = cruserdict(password)
       save()
-      return redirect('/user' + username)
+      return redirect('/user/' + username)
   return render_template('signup.html')
 
 @app.route('/user/<uname>', methods=['GET'])
