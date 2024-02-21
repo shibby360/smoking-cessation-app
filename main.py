@@ -8,7 +8,10 @@ app = Flask('app')
 def cruserdict(password):
   return {
     'days w/o smoking':0,
-    'password':password
+    'password':password,
+    'goal':10,
+    'points':0,
+    'items':[]
   }
 users = json.loads(db.get_raw('users'))
 print(users)
@@ -71,4 +74,5 @@ def savepage():
   save()
   print(db['users'][uname])
   return 'saved'
+  
 app.run(host='0.0.0.0', port=8080)
