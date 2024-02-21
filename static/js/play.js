@@ -40,7 +40,7 @@ class cardEl extends HTMLElement {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 9px;
-  display: flex;
+  visibility: flex;
   align-items: center;
   justify-content: center;
 }
@@ -94,7 +94,7 @@ class questionEl extends HTMLElement {
     var styles = $('<style>')
     styles.html(`
 .fulldiv {
-  display: flex;
+  visibility: flex;
   align-items: center;
   flex-direction: column;
 }
@@ -107,7 +107,7 @@ class questionEl extends HTMLElement {
   box-sizing: border-box;
   color: #24292E;
   cursor: pointer;
-  display: inline-block;
+  visibility: inline-block;
   font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 14px;
   font-weight: 500;
@@ -172,12 +172,12 @@ class questionEl extends HTMLElement {
       } else {
         qnumber++
         $('question-el[index='+(qnumber)+']').addClass('qin')
-        $('question-el[index='+(qnumber)+']').css('display', 'inline')
+        $('question-el[index='+(qnumber)+']').css('visibility', 'visible')
         $('question-el[index='+(qnumber-1)+']').addClass('qout')
         moving = 1
         setTimeout(function() {
           $('question-el[index='+(qnumber-1)+']').removeClass('qout')
-          $('question-el[index='+(qnumber-1)+']').css('display', 'none')
+          $('question-el[index='+(qnumber-1)+']').css('visibility', 'hidden')
           moving = 0
         }, Number(getCSSVar('--qmovetime').replace(/\D/g, ''))*950)
       }
@@ -188,12 +188,17 @@ var qnumber = 1
 var qs = []
 var moving = 0
 customElements.define('question-el', questionEl)
-$(`question-el[index="${qnumber}"]`).css('display', 'inline')
+$(`question-el[index="${qnumber}"]`).css('visibility', 'visible')
 $(document).on('keyup', function(ev) {
   if(ev.key == 'Enter' && !moving) {
     $($(`question-el[index="${qnumber}"]`)[0].shadowRoot.querySelector('#smbt')).click()
   }
 })
+var qheights = []
+for(var i of Array.from($('question-el'))) {
+  qheights.push(Number(getComputedStyle(i).height.replace('px','')))
+}
+$('#questions').css('height', Math.max(...qheights))
 /* popups */
 class popupEl extends HTMLElement {
   constructor() {
@@ -203,7 +208,7 @@ class popupEl extends HTMLElement {
     var shadow = this.attachShadow({mode: 'open'})
     var styles = $('<style>')
     styles.html(`.popdiv {
-  display: none;
+  visibility: hidden;
   z-index: 200;
   background-color: #c9c9c9;
   padding-top: 0.5px;
@@ -221,11 +226,11 @@ class popupEl extends HTMLElement {
     shadow.appendChild(content[0])
   }
   pop() {
-    $(this.shadowRoot.querySelector('.popdiv')).css('display', 'block')
+    $(this.shadowRoot.querySelector('.popdiv')).css('visibility', 'visible')
     $(this).addClass('popshow')
     var popdiv = $(this.shadowRoot.querySelector('.popdiv'))
     setTimeout(function() {
-      popdiv.css('display', 'none')
+      popdiv.css('visibility', 'hidden')
       $(this).removeClass('popshow')
     }, Number(getCSSVar('--poptime').replace(/\D/g, '') * 999))
   }

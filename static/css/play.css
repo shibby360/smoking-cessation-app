@@ -15,13 +15,13 @@ body {
   }
   100% {
     opacity: 100%;
-    left: calc(50% - calc(var(--qwidth) / 2));
+    left: calc(50% - var(--qwidth) / 2);
   }
 }
 @keyframes qout {
   0% {
     opacity: 100%;
-    left: calc(50% - calc(var(--qwidth) / 2));
+    left: calc(50% - var(--qwidth) / 2);
   }
   100% {
     opacity: 0%;
@@ -56,7 +56,13 @@ body {
 }
 question-el {
   width: var(--qwidth);
-  display: none;
   position: absolute;
+  visibility: hidden;
   top: 100px;
+}
+#backbtn {
+  align-self: flex-start;
+}
+#questions {
+  width: var(--qwidth)
 }
