@@ -25,6 +25,7 @@ if(data['days w/o smoking'] >= data['goal']) {
     $('#stars').css('display', 'none')
     $('#stars > img').css('animation', '')
     userdata['days w/o smoking'] = 0
+    userdata['points'] += 20
     savedata()
   }, 3000)
 }

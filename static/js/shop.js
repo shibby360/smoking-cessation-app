@@ -34,14 +34,27 @@ class shopItem extends HTMLElement {
     shadow.appendChild(content[0])
     var cost = Number(this.getAttribute('cost'))
     var sid = this.getAttribute('sid')
+    var self = this
     $(shadow.querySelector('.shopitem')).click(function(ev) {
       if(cost > userdata['points']) {
         alert('You don\'t have enough points!')
         return
       }
       userdata['points'] -= cost
+      $('#points').text('Points: ' + userdata['points'])
       userdata['items'].push(sid)
       savedata()
+      var popup = $('<p>')
+      popup.text('+1 ' + sid)
+      popup.css('position', 'absolute')
+      $(document.body).append(popup)
+      document.documentElement.style.setProperty('--poptop', (self.offsetTop - popup[0].offsetHeight) + 'px')
+      popup.css('left', 'calc(' + self.offsetLeft + 'px' + ' + ' + self.offsetWidth/2 + 'px' + ' - ' + popup[0].offsetWidth / 2 + 'px)')
+      // console.log('calc(' + self.offsetLeft + 'px' + self.offsetWidth/2 + 'px' + ' - ' + popup[0].offsetWidth / 2 + 'px)')
+      popup.css('animation', 'flyup 1s linear')
+      setTimeout(function() {
+        popup.remove()
+      }, 900)
     })
   }
 }
