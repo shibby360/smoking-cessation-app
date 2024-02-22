@@ -33,9 +33,14 @@ class shopItem extends HTMLElement {
     shadow.appendChild(styles[0])
     shadow.appendChild(content[0])
     var cost = Number(this.getAttribute('cost'))
+    var sid = this.getAttribute('sid')
     $(shadow.querySelector('.shopitem')).click(function(ev) {
+      if(cost > userdata['points']) {
+        alert('You don\'t have enough points!')
+        return
+      }
       userdata['points'] -= cost
-      userdata['items'].push(ev.target.getAttribute('sid'))
+      userdata['items'].push(sid)
       savedata()
     })
   }

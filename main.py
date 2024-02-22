@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, redirect
-import os
+import os, time
 from replit import db
 import json
+os.environ['TZ'] = 'US/Pacific'
+time.tzset()
 # print(os.environ['REPLIT_DB_URL'])
 app = Flask('app')
 
@@ -11,7 +13,8 @@ def cruserdict(password):
     'password':password,
     'goal':10,
     'points':0,
-    'items':[]
+    'items':[],
+    'last logged in':time.time()
   }
 users = json.loads(db.get_raw('users'))
 print(users)
