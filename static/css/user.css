@@ -2,6 +2,14 @@
   --goaldivsize: 155px;
   --goalportion: 0deg;
 }
+@keyframes hooray {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 #goaldiv {
   background: linear-gradient(white, white) padding-box, conic-gradient(#ff5722 var(--goalportion), rgba(125,125,125,0.3) 0) border-box;
   border-radius: 50em;
@@ -15,4 +23,24 @@
 #goaldiv > #num {
   font-size: xx-large;
   margin-bottom: 0;
+}
+#stars > img {
+  position: absolute;
+  width: 40px;
+}
+#star1 {
+  top: 90px;
+  left: 15px;
+}
+#star2 {
+  top: 90px;
+  left: 130px;
+}
+#star3 {
+  top: 200px;
+  left: 15px;
+}
+#star4 {
+  top: 200px;
+  left: 130px;
 }
