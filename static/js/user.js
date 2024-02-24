@@ -26,6 +26,8 @@ if(data['days w/o smoking'] >= data['goal']) {
     $('#stars > img').css('animation', '')
     userdata['days w/o smoking'] = 0
     userdata['points'] += 20
+    $('#points').text('Points: ' + userdata['points'])
+    document.documentElement.style.setProperty('--goalportion', ((data['days w/o smoking']/data['goal'])*360) + 'deg')
     savedata()
   }, 3000)
 }

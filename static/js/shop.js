@@ -50,7 +50,6 @@ class shopItem extends HTMLElement {
       $(document.body).append(popup)
       document.documentElement.style.setProperty('--poptop', (self.offsetTop - popup[0].offsetHeight) + 'px')
       popup.css('left', 'calc(' + self.offsetLeft + 'px' + ' + ' + self.offsetWidth/2 + 'px' + ' - ' + popup[0].offsetWidth / 2 + 'px)')
-      // console.log('calc(' + self.offsetLeft + 'px' + self.offsetWidth/2 + 'px' + ' - ' + popup[0].offsetWidth / 2 + 'px)')
       popup.css('animation', 'flyup 1s linear')
       setTimeout(function() {
         popup.remove()
