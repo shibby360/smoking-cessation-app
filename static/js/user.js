@@ -33,19 +33,35 @@ if(data['days w/o smoking'] >= data['goal']) {
     savedata()
   }, 3000)
 }
-$('#items').html('')
+// $('#items').html('')
 for(var i of data['items']) {
-  var li = $('<li>')
+  /* var li = $('<li>')
   li.text(i)
-  $('#items').append(li)
+  $('#items').append(li)*/
+  $('#' + avatarparts[i].type).append($(`<option value="${i}">${i}</option>`))
 }
-for(var i in data['avatar']) {
-  j = data['avatar'][i]
-  if(j == '') { continue }
-  if(typeof j == 'object') {
-    if(j[0] == '') { continue }
-    $('#avatar').html($('#avatar').html() + avatarparts[j[0]][j[1]])
-    continue
+$('#avatarselect > select').append($(`<option value="">None</option>`))
+function drawavatar() {
+  $('#avatar').html('')
+  for(var i in data['avatar']) {
+    j = data['avatar'][i]
+    if(j == '') { continue }
+    if(typeof j == 'object') {
+      if(j[0] == '') { continue }
+      $('#avatar').html($('#avatar').html() + avatarparts[j[0]][j[1]])
+      continue
+    }
+    $('#avatar').html($('#avatar').html() + avatarparts[j].content)
   }
-  $('#avatar').html($('#avatar').html() + avatarparts[j].content)
 }
+drawavatar()
+$('#avatarselect > select').on('change', function(ev) {
+  if(ev.target.id == 'accesory') {
+    userdata['avatar']['accesory'][0] = ev.target.value
+  } else {
+    userdata['avatar'][ev.target.id] = ev.target.value
+  }
+  savedata()
+  data = userdata
+  drawavatar()
+})

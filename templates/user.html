@@ -21,7 +21,31 @@
 <a href='/play'>Play</a>
 <a href='/shop'>Shop</a>
 <svg id='avatar'></svg>
-<div id='avatarselect'></div>
+<div id='avatarselect'>
+  <label>Hat</label>
+  <select name="" id="hat"></select>
+  <br>  
+  <label>Head</label>
+  <select name="" id="head"></select>
+  <br>
+  <label>Body</label>
+  <select name="" id="body"></select>
+  <br>
+  <label>Right hand</label>
+  <select name="" id="rhand"></select>
+  <br>
+  <label>Left hand</label>
+  <select name="" id="lhand"></select>
+  <br>
+  <label>Legs</label>
+  <select name="" id="legs"></select>
+  <br>
+  <label>Accesory</label>
+  <select name="" id="accesory"></select>
+  <br>
+  <label>Badge</label>
+  <select name="" id="badge"></select>
+</div>
 {% endblock %}
 {% block scripts %}
 <script src='{{ url_for("static", filename="js/user.js") }}'></script>

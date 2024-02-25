@@ -35,6 +35,6 @@ var avatarparts = {
   },
   'Badge':{
     type:'badge',
-    content:`<circle style="cx: 69;cy: 91;r: 8;fill: #FFC107;stroke: black;" /><path style="d: path('m69,99 l6,13 h-11 z');fill: #ffc107;stroke: black;" />`
+    content:`<circle style="cx: 69;cy: 91;r: 8;fill: #FFC107;stroke: black;" /><path style="d: path('m69,99 l6,13 h-11 z');fill: #ffc107;stroke: black;" /><path style="d: path('m69,96 l4,-6 h-8 z');fill: #F4511E;stroke: black;" />`
   }
 }
