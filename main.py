@@ -13,8 +13,18 @@ def cruserdict(password):
     'password':password,
     'goal':10,
     'points':0,
-    'items':[],
-    'last logged in':time.time()
+    'items':["starter-body", "starter-head", "starter-lhand", "starter-rhand", "starter-legs"],
+    'last logged in':time.time(),
+    'avatar':{
+      'hat':'', 
+      'head':'starter-head', 
+      'body':'starter-body', 
+      'legs':'starter-legs', 
+      'rhand':'starter-rhand',
+      'lhand':'starter-lhand', 
+      'accesory':['', 'right'],
+      'badge':''
+    }
   }
 users = json.loads(db.get_raw('users'))
 print(users)
