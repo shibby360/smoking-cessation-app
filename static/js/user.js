@@ -26,18 +26,14 @@ if(data['days w/o smoking'] >= data['goal']) {
   setTimeout(function() {
     $('#stars').css('display', 'none')
     $('#stars > img').css('animation', '')
-    userdata['days w/o smoking'] = 0
+    userdata['goal'] += 10
     userdata['points'] += 20
     $('#points').text('Points: ' + userdata['points'])
     document.documentElement.style.setProperty('--goalportion', ((data['days w/o smoking']/data['goal'])*360) + 'deg')
     savedata()
   }, 3000)
 }
-// $('#items').html('')
 for(var i of data['items']) {
-  /* var li = $('<li>')
-  li.text(i)
-  $('#items').append(li)*/
   $('#' + avatarparts[i].type).append($(`<option value="${i}">${i}</option>`))
 }
 $('#avatarselect > select').append($(`<option value="">None</option>`))

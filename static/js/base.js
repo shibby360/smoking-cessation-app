@@ -21,20 +21,28 @@ var avatarparts = {
     type:'body', 
     content:`<rect style="x: 55; y: 74; width: 40px; height: 100px; fill: none; stroke: black; stroke-width: 3px;">`
   },
-  'starter-legs':{
-    type:'legs',
-    content:`<rect style="x: 55;y: 174;width: 18px;height: 100px;fill: none;stroke: black;stroke-width: 3px;" /><rect style="x: 77;y: 174;width: 18px;height: 100px;fill: none;stroke: black;stroke-width: 3px;" />`
+  'starter-rleg':{
+    type:'rleg',
+    content:`<rect style="x: 55;y: 174;width: 18px;height: 100px;fill: none;stroke: black;stroke-width: 3px;" />`
+  },
+  'starter-lleg':{
+    type:'lleg',
+    content:`<rect style="x: 77;y: 174;width: 18px;height: 100px;fill: none;stroke: black;stroke-width: 3px;" />`
   },
   'starter-rhand':{
     type:'rhand',
-    content:`<path style="d: path('M95,126 l32,36 l12,-11 l-44,-49 z');fill: none;stroke: black;stroke-width: 3px;" />`
+    content:`<path style="d: path('M55,126 l-40,36 l-9,-14 l49,-49 z');fill: none;stroke: black;stroke-width: 3px;" />`
   },
   'starter-lhand':{
     type:'lhand',
-    content:`<path style="d: path('M55,126 l-40,36 l-9,-14 l49,-49 z');fill: none;stroke: black;stroke-width: 3px;" />`
+    content:`<path style="d: path('M95,126 l32,36 l12,-11 l-44,-49 z');fill: none;stroke: black;stroke-width: 3px;" />`
   },
   'Badge':{
     type:'badge',
     content:`<circle style="cx: 69;cy: 91;r: 8;fill: #FFC107;stroke: black;" /><path style="d: path('m69,99 l6,13 h-11 z');fill: #ffc107;stroke: black;" /><path style="d: path('m69,96 l4,-6 h-8 z');fill: #F4511E;stroke: black;" />`
+  },
+  'badeg':{
+    type:'badge',
+    content:`<circle style="cx: 66;cy: 87;r: 4;fill: yellow;stroke: black;" />`
   }
 }

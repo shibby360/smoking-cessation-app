@@ -44,16 +44,21 @@
   top: 200px;
   left: 130px;
 }
-#avatar {
+#avatararea {
   position: absolute;
   left: 300px;
   top: 20px;
+}
+#avatar {
+  /* position: absolute; */
+  /* left: 300px; */
+  /* top: 20px; */
   width: 150px;
   height: 300px;
   border: 3px black solid;
 }
 #avatarselect {
-  position: absolute;
-  left: 500px;
-  top: 20px;
+  /* position: absolute; */
+  /* left: 500px; */
+  /* top: 20px; */
 }
