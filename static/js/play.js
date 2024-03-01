@@ -1,6 +1,16 @@
 function getCSSVar(x) {
   return getComputedStyle(document.documentElement).getPropertyValue(x)
 }
+function shuffle(array) {
+  let currentIndex = array.length,randomIndex;
+  while (currentIndex > 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+  return array;
+}
 /* cards */
 class cardEl extends HTMLElement {
   constructor() {
@@ -173,6 +183,7 @@ class questionEl extends HTMLElement {
         qnumber++
         $('question-el[index='+(qnumber)+']').addClass('qin')
         $('question-el[index='+(qnumber)+']').css('visibility', 'visible')
+        $('question-el[index='+(qnumber)+']')[0].shadowRoot.querySelector('input').focus()
         $('question-el[index='+(qnumber-1)+']').addClass('qout')
         moving = 1
         setTimeout(function() {
@@ -183,6 +194,11 @@ class questionEl extends HTMLElement {
       }
     })
   }
+}
+var qEls = $('#questions').children()
+var randlst = Array.from(shuffle(Array.from({length:qEls.length},(v,k)=>k+1)))
+for(var i = 0; i < qEls.length; i++) {
+  qEls[i].setAttribute('index', randlst[i])
 }
 var qnumber = 1
 var qs = []
