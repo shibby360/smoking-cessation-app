@@ -44,5 +44,9 @@ var avatarparts = {
   'badeg':{
     type:'badge',
     content:`<circle style="cx: 66;cy: 87;r: 4;fill: yellow;stroke: black;" />`
+  },
+  'small hat':{
+    type:'hat',
+    content:`<path d="M56,29 A20,20 0 0,1 90,27" fill="none" stroke="black" stroke-width="8px" />`
   }
 }

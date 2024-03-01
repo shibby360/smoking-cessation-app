@@ -29,6 +29,7 @@ if(data['days w/o smoking'] >= data['goal']) {
     userdata['goal'] += 10
     userdata['points'] += 20
     $('#points').text('Points: ' + userdata['points'])
+    $('#goal').html('Days without smoking<br>Goal: ' + userdata['goal'])
     document.documentElement.style.setProperty('--goalportion', ((data['days w/o smoking']/data['goal'])*360) + 'deg')
     savedata()
   }, 3000)
