@@ -10,6 +10,18 @@
     transform: rotate(360deg);
   }
 }
+@keyframes numin {
+  from {
+    opacity: 0%;
+    display: block;
+    bottom: 40px;
+  }
+  to {
+    opacity: 100%;
+    display: block;
+    bottom: 0px;
+  }
+}
 #goaldiv {
   background: linear-gradient(white, white) padding-box, conic-gradient(#ff5722 var(--goalportion), rgba(125,125,125,0.3) 0) border-box;
   border-radius: 50em;
@@ -23,6 +35,9 @@
 #goaldiv > #num {
   font-size: xx-large;
   margin-bottom: 0;
+}
+#num {
+  position: relative;
 }
 #stars > img {
   position: absolute;
