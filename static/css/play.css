@@ -64,5 +64,27 @@ question-el {
   align-self: flex-start;
 }
 #questions {
-  width: var(--qwidth)
+  width: var(--qwidth);
+}
+@keyframes endcardin {
+  0% {
+    opacity: 0%;
+    left: calc(100% - (var(--qwidth) * 2));
+  }
+  100% {
+    opacity: 100%;
+    left: calc(50% - var(--qwidth));
+  }
+}
+.endcardin {
+  animation: endcardin var(--qmovetime) linear;
+}
+end-card {
+  width: calc(var(--qwidth) * 2);
+  top: 100px;
+  display: block;
+  position: absolute;
+  z-index: -1;
+  visibility: hidden;
+  left: calc(50% - var(--qwidth));
 }

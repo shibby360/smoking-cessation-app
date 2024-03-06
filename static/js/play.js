@@ -172,6 +172,7 @@ class questionEl extends HTMLElement {
           useranswerinp.css('border', '2px solid green')
           $('pop-up')[0].pop()
           userdata['points'] += 10
+          pts += 10
           savedata()
         } else {
           resultp.text('wrong...')
@@ -181,9 +182,15 @@ class questionEl extends HTMLElement {
         $(ev.target).text('Next')
       } else {
         qnumber++
-        $('question-el[index='+(qnumber)+']').addClass('qin')
-        $('question-el[index='+(qnumber)+']').css('visibility', 'visible')
-        $('question-el[index='+(qnumber)+']')[0].shadowRoot.querySelector('input').focus()
+        if(qnumber <= qs.length) {
+          $('question-el[index='+(qnumber)+']').addClass('qin')
+          $('question-el[index='+(qnumber)+']').css('visibility', 'visible')
+          $('question-el[index='+(qnumber)+']')[0].shadowRoot.querySelector('input').focus()
+        } else {
+          $('end-card')[0].setStuff()
+          $('end-card').addClass('endcardin')
+          $('end-card').css('visibility', 'visible')
+        }
         $('question-el[index='+(qnumber-1)+']').addClass('qout')
         moving = 1
         setTimeout(function() {
@@ -195,7 +202,7 @@ class questionEl extends HTMLElement {
     })
   }
 }
-var qEls = $('#questions').children()
+var qEls = $('#questions').find('question-el')
 var randlst = Array.from(shuffle(Array.from({length:qEls.length},(v,k)=>k+1)))
 for(var i = 0; i < qEls.length; i++) {
   qEls[i].setAttribute('index', randlst[i])
@@ -215,6 +222,7 @@ for(var i of Array.from($('question-el'))) {
   qheights.push(Number(getComputedStyle(i).height.replace('px','')))
 }
 $('#questions').css('height', Math.max(...qheights))
+$('end-card').css('height', Math.max(...qheights))
 /* popups */
 class popupEl extends HTMLElement {
   constructor() {
@@ -252,3 +260,30 @@ class popupEl extends HTMLElement {
   }
 }
 customElements.define("pop-up", popupEl)
+/* end card */
+var pts = 0
+class endCard extends HTMLElement {
+  constructor() {
+    super()
+  }
+  connectedCallback() {
+    var shadow = this.attachShadow({mode: 'open'})
+    var styles = $(`<style>#fulldiv {
+  width: 100%;
+  height: 100%;
+  border: 3px black solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}</style>`)
+    var content = $(`<div id="fulldiv">
+<h2 id="points">You got some points!<h2>
+</div>`)
+    shadow.appendChild(styles[0])
+    shadow.appendChild(content[0])
+  }
+  setStuff() {
+    this.shadowRoot.querySelector('#points').innerHTML = `You got ${pts} points!`
+  }
+}
+customElements.define('end-card', endCard)
