@@ -27,11 +27,11 @@ def cruserdict(password):
       'badge':''
     }
   }
-users = db['users']
+users = json.loads(db['users'])
 print(users)
 def save():
   global users
-  users = db['users']
+  users = json.loads(db['users'])
   
 @app.route('/')
 def hello_world():
