@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, redirect
 import os, time
-from replit import db
+import requests
+import dbclass
 import json
 os.environ['TZ'] = 'US/Pacific'
 time.tzset()
-# print(os.environ['REPLIT_DB_URL'])
 app = Flask('app')
-
+db = dbclass.db
 def cruserdict(password):
   return {
     'days w/o smoking':0,
@@ -27,11 +27,11 @@ def cruserdict(password):
       'badge':''
     }
   }
-users = json.loads(db.get_raw('users'))
+users = db['users']
 print(users)
 def save():
   global users
-  users = json.loads(db.get_raw('users'))
+  users = db['users']
   
 @app.route('/')
 def hello_world():

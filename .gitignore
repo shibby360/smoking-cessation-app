@@ -4,3 +4,5 @@ pyproject.toml
 .replit
 .breakpoints
 dbfuncs.py
+__pycache__/
+api/__pycache__/
