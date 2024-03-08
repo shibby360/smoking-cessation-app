@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, redirect
 import os, time
 import requests
+if __name__ == '__main__':
+  import sys
+  sys.path.append('/home/runner/smoking-cessation-website/')
 import dbclass
 import json
 os.environ['TZ'] = 'US/Pacific'
@@ -27,11 +30,11 @@ def cruserdict(password):
       'badge':''
     }
   }
-users = json.loads(db['users'])
+users = db['users']
 print(users)
 def save():
   global users
-  users = json.loads(db['users'])
+  db['users'] = users
   
 @app.route('/')
 def hello_world():
@@ -59,7 +62,7 @@ def signup():
     if username in db:
       return 'Username already exists'
     else:
-      db['users'][username] = cruserdict(password)
+      users[username] = cruserdict(password)
       save()
       return redirect('/user/' + username)
   return render_template('signup.html')
@@ -82,11 +85,11 @@ def shoppage():
 def savepage():
   data = request.json
   uname = data['uname']
-  data['password'] = db['users'][uname]['password']
+  data['password'] = users[uname]['password']
   del data['uname']
-  db['users'][uname] = data
+  users[uname] = data
   save()
-  print(db['users'][uname])
+  print(users[uname])
   return 'saved'
 
 if __name__ == '__main__':
