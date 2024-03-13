@@ -31,7 +31,10 @@ def cruserdict(password):
     }
   }
 users = db['users']
-print(users)
+# print(users)
+for i in users:
+  print(i)
+  print(users[i])
 def save():
   global users
   db['users'] = users
@@ -59,7 +62,7 @@ def signup():
   if request.method == 'POST':
     username = request.form['username']
     password = request.form['password']
-    if username in db:
+    if username in users:
       return 'Username already exists'
     else:
       users[username] = cruserdict(password)

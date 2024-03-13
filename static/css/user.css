@@ -64,6 +64,7 @@
   left: 300px;
   top: 20px;
   display: grid;
+  justify-items: center;
 }
 #avatar {
   width: 150px;
