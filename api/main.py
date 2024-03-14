@@ -18,6 +18,7 @@ def cruserdict(password):
     'points':0,
     'items':["starter-body", "starter-head", "starter-lhand", "starter-rhand", "starter-rleg", "starter-lleg"],
     'last logged in':time.time(),
+    'total days':0,
     'avatar':{
       'hat':'', 
       'head':'starter-head', 

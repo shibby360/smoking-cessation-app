@@ -13,7 +13,8 @@ if(oglogin.toDateString() != nowlogin.toDateString()) {
   userdata['total days'] += 1
   var pregoal = ((data['days w/o smoking']-1)/data['goal'])*360
   var endgoal = (data['days w/o smoking']/data['goal'])*360
-  var goalinc = (endgoal - pregoal)/2000
+  var goalinc = (endgoal - pregoal)/400
+  /* idk why its 400 but it works 💀 */
   var movegoal = setInterval(function(params) {
     pregoal += goalinc
     document.documentElement.style.setProperty('--goalportion', pregoal + 'deg')
