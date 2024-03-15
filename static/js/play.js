@@ -175,7 +175,7 @@ class questionEl extends HTMLElement {
           pts += 10
           savedata()
         } else {
-          resultp.text('wrong...')
+          resultp.text('wrong... answer was ' + qs[qnumber-1].getAttribute('answer'))
           resultp.css('color', 'red')
           useranswerinp.css('border', '2px solid red')
         }
