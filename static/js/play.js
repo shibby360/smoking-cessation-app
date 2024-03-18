@@ -117,7 +117,7 @@ class questionEl extends HTMLElement {
   box-sizing: border-box;
   color: #24292E;
   cursor: pointer;
-  visibility: inline-block;
+  display: inline-block;
   font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 14px;
   font-weight: 500;

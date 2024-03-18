@@ -74,3 +74,8 @@ $('#avatarselect > select').on('change', function(ev) {
   data = userdata
   drawavatar()
 })
+$('#logout').click(function(ev) {
+  localStorage.removeItem('data')
+  localStorage.removeItem('uname')
+  window.location.href = '/'
+})

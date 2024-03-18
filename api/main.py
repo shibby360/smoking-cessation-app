@@ -1,11 +1,10 @@
+import os
+import time
 from flask import Flask, render_template, request, redirect
-import os, time
-import requests
 if __name__ == '__main__':
   import sys
   sys.path.append('/home/runner/smoking-cessation-website/')
 import dbclass
-import json
 os.environ['TZ'] = 'US/Pacific'
 time.tzset()
 app = Flask('app')
