@@ -3,10 +3,13 @@
 {% block styles %}
 <link rel='stylesheet' href='{{ url_for("static", filename="css/index.css") }}' type='text/css'>
 {% endblock %}
-{% block body %} 
+{% block body %}
+<h1 id='smokingheader'>Welcome to your journey to stop smoking.</h1>
+<div id='linkcontainer'>
 <a href="/login">Log in</a>
 <p>or</p>
 <a href="/signup">Sign up</a>
+</div>
 {% endblock %}
 {% block scripts %}
 <script src='{{ url_for("static", filename="js/index.js") }}'></script>

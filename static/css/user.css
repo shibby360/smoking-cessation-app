@@ -13,12 +13,10 @@
 @keyframes numin {
   from {
     opacity: 0%;
-    display: block;
     bottom: 40px;
   }
   to {
     opacity: 100%;
-    display: block;
     bottom: 0px;
   }
 }
@@ -32,12 +30,15 @@
 #goaldiv > p {
   text-align: center;
 }
-#goaldiv > #num {
+#goaldiv > #num, #onum {
   font-size: xx-large;
   margin-bottom: 0;
 }
 #num {
   position: relative;
+}
+#onum {
+  display: none;
 }
 #stars > img {
   position: absolute;

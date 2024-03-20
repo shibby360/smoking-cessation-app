@@ -50,7 +50,7 @@ def login():
     password = request.form['password']
     if username in users:
       if users[username]['password'] == password:
-        return redirect('/user/'+ username)
+        return redirect('/user/' + username + '?f=1')
       else:
         return 'Invalid password'
     else:
@@ -67,7 +67,7 @@ def signup():
     else:
       users[username] = cruserdict(password)
       save()
-      return redirect('/user/' + username)
+      return redirect('/user/' + username + '?f=1')
   return render_template('signup.html')
 
 @app.route('/user/<uname>', methods=['GET'])
