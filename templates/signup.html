@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 {% block title %} Sign up {% endblock %}
 {% block styles %}
-
+<link rel='stylesheet' href='{{ url_for("static", filename="css/signlog.css") }}' type='text/css'>
 {% endblock %}
-{% block body %} 
+{% block body %}
+<h3>Sign up</h3>
 <form method='post'>
   <label for="username">Username</label>
   <input name="username">
   <br>
   <label for="password">Password</label>
   <input type="password" name="password">
+  <br>
   <input type="submit">
 </form>
 {% endblock %}

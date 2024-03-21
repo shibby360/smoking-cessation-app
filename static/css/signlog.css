@@ -1,0 +1,17 @@
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 200%;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+input {
+  transform-origin: top;
+  transform: scale(1.2);
+}
