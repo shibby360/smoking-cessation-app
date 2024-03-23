@@ -61,11 +61,9 @@
   left: 130px;
 }
 #avatararea {
-  position: absolute;
-  left: 300px;
-  top: 20px;
   display: grid;
   justify-items: center;
+  margin-left: 80px;
 }
 #avatar {
   width: 150px;
@@ -112,4 +110,7 @@
 }
 #logout:focus {
   outline: 1px transparent;
+}
+body {
+  display: flex;
 }

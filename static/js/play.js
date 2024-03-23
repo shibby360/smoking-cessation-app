@@ -108,7 +108,7 @@ class questionEl extends HTMLElement {
   align-items: center;
   flex-direction: column;
 }
-${buttonStyle('#sbmt')}
+${buttonStyle('#smbt')}
 `)
     var content = $('<div class="fulldiv">')
     content.html(`

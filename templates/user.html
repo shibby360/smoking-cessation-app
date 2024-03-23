@@ -4,6 +4,7 @@
 <link rel='stylesheet' href='{{ url_for("static", filename="css/user.css") }}' type='text/css'>
 {% endblock %}
 {% block body %}
+<div id='contentdiv'>
 <h1 id='uname'>{{ uname }}</h1>
 <div id='goaldiv'>
   <p id='num'>{{ data['days w/o smoking'] }}</p>
@@ -19,9 +20,11 @@
   <img id='star3'>
   <img id='star4'>
 </div>
-<a href='/play' class='onlyloggedin'>Play</a>
-<a href='/shop' class='onlyloggedin'>Shop</a>
-<svg id="pointingsvg" style="position: absolute; left: 0px; top: 316px;" class='onlyloggedin'>
+<a href='/play' class='onlyloggedin' title='Answer questions and get points!'>Play</a>
+<a href='/shop' class='onlyloggedin' title='Use your points and buy items for your avatar!'>Shop</a>
+<button id='logout' class='onlyloggedin'>Log out</button>
+</div>
+<!--<svg id="pointingsvg" style="position: absolute; left: 0px; top: 316px;" class='onlyloggedin'>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z"></path>
@@ -31,7 +34,7 @@
 " marker-start="url(#arrow)"></line>
 <text x="5" y="145">Answer questions and get points!</text><line x1="60" y1="30" x2="60" y2="70" stroke="black" style="
 " marker-start="url(#arrow)"></line><text x="45" y="85">Use your points and buy </text><text x="45" y="105">items for your avatar!</text>
-</svg>
+</svg>-->
 <div id='avatararea'>
   <p class='onlyloggedin'>Use your points to buy from the shop and customize your avatar!</p>
   <svg id='avatar'></svg>
@@ -64,7 +67,6 @@
     <select name="" id="badge"></select>
   </div>
 </div>
-<button id='logout' class='onlyloggedin'>Log out</button>
 {% endblock %}
 {% block scripts %}
 <script src='{{ url_for("static", filename="js/user.js") }}'></script>

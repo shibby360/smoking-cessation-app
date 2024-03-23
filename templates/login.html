@@ -2,6 +2,7 @@
 {% block title %} Log in {% endblock %}
 {% block styles %}
 <link rel='stylesheet' href='{{ url_for("static", filename="css/signlog.css") }}' type='text/css'>
+<style id='buttonStyles'></style>
 {% endblock %}
 {% block body %}
 <h3>Log in</h3>
@@ -12,8 +13,9 @@
   <label for="password">Password</label>
   <input type="password" name="password">
   <br>
-  <input type="submit">
+  <input type="submit" value="Log in">
 </form>
 {% endblock %}
 {% block scripts %}
+<script src='{{ url_for("static", filename="js/signlog.js") }}'></script>
 {% endblock %}

@@ -1,0 +1,1 @@
+$('#buttonStyles').html(buttonStyle('input[type="submit"]'))
