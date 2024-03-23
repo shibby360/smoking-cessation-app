@@ -55,6 +55,9 @@ class shopItem extends HTMLElement {
         popup.remove()
       }, 900)
     })
+    if(userdata['items'].includes(sid)) {
+      this.style.display = 'none'
+    }
   }
 }
 customElements.define('shop-item', shopItem)
