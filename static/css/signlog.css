@@ -15,3 +15,12 @@ input {
   transform-origin: top;
   transform: scale(1.2);
 }
+#error {
+  display: none;
+  font-size: 60%;
+  border-radius: 11px;
+  margin: 35px;
+  border: 3px red solid;
+  padding: 14px;
+  background: rgba(255, 0, 0, 0.2);
+}

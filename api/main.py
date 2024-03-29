@@ -52,9 +52,9 @@ def login():
       if users[username]['password'] == password:
         return redirect('/user/' + username + '?f=1')
       else:
-        return 'Invalid password'
+        return redirect('/login?i=1')
     else:
-      return 'Invalid username'
+      return redirect('/login?i=1')
   return render_template('login.html')
 
 @app.route('/signup', methods=['GET', 'POST'])

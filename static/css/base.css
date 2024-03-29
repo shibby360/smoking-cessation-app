@@ -1,3 +1,6 @@
+body {
+  background: #cfcfcf;
+}
 body > * {
   font-family: sans-serif;
 }

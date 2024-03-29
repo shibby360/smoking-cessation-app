@@ -114,3 +114,7 @@
 body {
   display: flex;
 }
+a, #points {
+  display: block;
+  margin: 5px;
+}
