@@ -197,7 +197,7 @@ class popupEl extends HTMLElement {
     styles.html(`.popdiv {
   visibility: hidden;
   z-index: 200;
-  background-color: #c9c9c9;
+  background-color: ${baseGray};
   padding-top: 0.5px;
   padding-bottom: 0.5px;
   padding-left: 27px;

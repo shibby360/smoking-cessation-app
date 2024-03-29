@@ -10,7 +10,7 @@ class shopItem extends HTMLElement {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #c9c9c9;
+  background-color: ${baseGray};
   border-radius: 10px;
   width: 140px;
   height: 185px;
@@ -62,3 +62,10 @@ class shopItem extends HTMLElement {
 }
 customElements.define('shop-item', shopItem)
 $('#points').text('Points: ' + userdata['points'])
+var ogshopitems = Array.from(document.querySelectorAll('shop-item'))
+var nshopitems = ogshopitems.filter((item) => {
+  return $(item).css('display') == 'none'
+})
+if(ogshopitems.length == nshopitems.length) {
+  $('#bought').css('display', 'block')
+}

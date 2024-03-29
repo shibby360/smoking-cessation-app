@@ -90,3 +90,4 @@ ${sel}:focus {
   outline: 1px transparent;
 }`
 }
+var baseGray = '#909090'

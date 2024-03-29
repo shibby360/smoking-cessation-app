@@ -69,6 +69,7 @@
   width: 150px;
   height: 300px;
   border: 3px black solid;
+  background: white;
 }
 #avatararea > p {
   grid-column: 1 / 3;
