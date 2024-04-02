@@ -29,10 +29,10 @@ class shopItem extends HTMLElement {
     content.html(`
 <h1>${$(this).text()}</h1>
 <p>${this.getAttribute('description')}</p>
-<p>${this.getAttribute('cost')} points</p>`)
+<p>${avatarparts[this.getAttribute('sid')].cost} points</p>`)
     shadow.appendChild(styles[0])
     shadow.appendChild(content[0])
-    var cost = Number(this.getAttribute('cost'))
+    var cost = avatarparts[this.getAttribute('sid')].cost
     var sid = this.getAttribute('sid')
     var self = this
     $(shadow.querySelector('.shopitem')).click(function(ev) {
@@ -54,6 +54,7 @@ class shopItem extends HTMLElement {
       setTimeout(function() {
         popup.remove()
       }, 900)
+      self.remove()
     })
     if(userdata['items'].includes(sid)) {
       this.style.display = 'none'

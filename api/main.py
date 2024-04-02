@@ -84,6 +84,10 @@ def playpage():
 def shoppage():
   return render_template('shop.html')
 
+@app.route('/inventory', methods=['GET'])
+def inventorypage():
+  return render_template('inventory.html')
+  
 @app.route('/save', methods=['POST'])
 def savepage():
   data = request.json

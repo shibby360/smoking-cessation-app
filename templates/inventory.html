@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} Sign up {% endblock %}
+{% block styles %}
+<link rel='stylesheet' href='{{ url_for("static", filename="css/inventory.css") }}' type='text/css'>
+<style id='buttonStyles'></style>
+{% endblock %}
+{% block body %}
+<h2>Inventory</h2>
+<p id='points'></p>
+<div id='items'></div>
+<a id='backbtn'>Go back</a>
+{% endblock %}
+{% block scripts %}
+<script src='{{ url_for("static", filename="js/inventory.js") }}'></script>
+{% endblock %}

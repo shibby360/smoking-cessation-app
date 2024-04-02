@@ -141,6 +141,8 @@ ${buttonStyle('#smbt')}
           resultp.text('wrong... answer was ' + qs[qnumber-1].getAttribute('answer'))
           resultp.css('color', 'red')
           useranswerinp.css('border', '2px solid red')
+          useranswerinp.css('background', 'white')
+          useranswerinp.attr('disabled', 'true')
         }
         $(ev.target).text('Next')
       } else {

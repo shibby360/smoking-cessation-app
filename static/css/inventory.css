@@ -1,0 +1,20 @@
+body {
+  width: calc(100vw - 16px);
+  height: calc(100vh - 16px);
+}
+h2,p {
+  margin: 0;
+}
+#items {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-content: stretch;
+}
+inv-item {
+  display: block;
+  width: 19%;
+  height: 34%;
+}
