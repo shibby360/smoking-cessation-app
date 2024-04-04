@@ -55,7 +55,7 @@ class InventoryItem extends HTMLElement {
     if(this.getAttribute('iname').startsWith('starter')) {
       content.find('#deleteAct').css('display', 'none')
     }
-    content.find('#preview').attr('viewBox', avatarparts[this.getAttribute('iname')].viewBox)
+    content.find('#preview')[0].setAttribute('viewBox', avatarparts[this.getAttribute('iname')].viewBox)
     content.find('#preview').html(avatarparts[this.getAttribute('iname')].content)
     shadow.appendChild(styles[0])
     shadow.appendChild(content[0])
