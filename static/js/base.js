@@ -15,8 +15,9 @@ $('#backbtn').attr('href', '/user/' + localStorage.getItem('uname'))
 var avatarparts = {
   'starter-head':{
     type:'head',
-    content:`<circle cx="50%" cy="50" r="24" fill="transparent" stroke="black" stroke-width="3px"/><circle cx="65px" cy="46px" r="4"/><circle cx="84px" cy="46px" r="4"/><path d="M65,61 A 20,20 0 0,0 84,61" fill="none" stroke="black" stroke-width="3px">`,
-    cost:0
+    content:`<circle cx="75" cy="50" r="24" fill="transparent" stroke="black" stroke-width="3px"/><circle cx="65px" cy="46px" r="4"/><circle cx="84px" cy="46px" r="4"/><path d="M65,61 A 20,20 0 0,0 84,61" fill="none" stroke="black" stroke-width="3px">`,
+    cost:0,
+    viewBox:'40 20 70 60'
   },
   'starter-body':{
     type:'body', 
@@ -57,12 +58,13 @@ var avatarparts = {
     type:'badge',
     content:`<circle style="cx: 66;cy: 87;r: 4;fill: yellow;stroke: black;" />`,
     cost:25,
-    
+    viewBox:'50 70 40 40'
   },
   'small hat':{
     type:'hat',
     content:`<path d="M56,29 A20,20 0 0,1 90,27" fill="none" stroke="black" stroke-width="8px" />`,
-    cost:10
+    cost:10,
+    viewBox:'40 10 60 40'
   }
 }
 function buttonStyle(sel) {
