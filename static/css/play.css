@@ -84,7 +84,7 @@ end-card {
   top: 100px;
   display: block;
   position: absolute;
-  z-index: -1;
+  z-index: 1000;
   visibility: hidden;
   left: calc(50% - var(--qwidth));
 }

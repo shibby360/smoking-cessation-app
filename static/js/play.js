@@ -11,7 +11,7 @@ function shuffle(array) {
   }
   return array;
 }
-/* cards */
+/* cards (fold lines) */
 class cardEl extends HTMLElement {
   constructor() {
     super()
@@ -110,11 +110,21 @@ class questionEl extends HTMLElement {
 }
 ${buttonStyle('#smbt')}
 `)
+    var inputtext = ''
+    if(this.getAttribute('type') == 'pick') {
+      inputtext += '<div>'
+      for(var i of this.getAttribute('choices').split(',')) {
+        inputtext += `<input type='radio' name='choices' value='${i}' id='${i}'><label for='${i}'>${i}</label><br>`
+      }
+      inputtext += '<div>'
+    } else {
+      inputtext = `<input id='useranswer'>`
+    }
     var content = $('<div class="fulldiv">')
     content.html(`
 <h1>Question ${this.getAttribute('index')}</h1>
 <p>${this.getAttribute('question')}</p>
-<input id='useranswer'>
+${inputtext}
 <p id='result'></p>
 <button id='smbt'>Submit</button>
 <!-- <card-el top="${this.getAttribute('question')}" bottom="${this.getAttribute('answer')}" width='500px' height='400px'><card-el> -->
@@ -122,13 +132,20 @@ ${buttonStyle('#smbt')}
     shadow.appendChild(styles[0])
     shadow.appendChild(content[0])
     qs[this.getAttribute('index')-1] = this
-    var useranswerinp = $(shadow.querySelector('#useranswer'))
+    var self = this
     $(shadow.querySelector('#smbt')).click(function(ev) {
+      var useranswerinp
+      if(self.getAttribute('type') == 'pick') {
+        useranswerinp = $(shadow.querySelector("input[name=choices]:checked"))
+      } else {    
+        useranswerinp = $(shadow.querySelector('#useranswer'))
+      }
       if($(ev.target).text() == 'Submit') { 
         var useranswer = useranswerinp.val()
         if(useranswerinp.val() == '') { return }
         var resultp = $(shadow.querySelector('#result'))
         useranswerinp.val('')
+        console.log(useranswer)
         if (useranswer == qs[qnumber-1].getAttribute('answer')) {
           resultp.text('correct!')
           resultp.css('color', 'green')
@@ -150,7 +167,9 @@ ${buttonStyle('#smbt')}
         if(qnumber <= qs.length) {
           $('question-el[index='+(qnumber)+']').addClass('qin')
           $('question-el[index='+(qnumber)+']').css('visibility', 'visible')
+          if($('question-el[index='+(qnumber)+']').attr('type') != 'pick') {
           $('question-el[index='+(qnumber)+']')[0].shadowRoot.querySelector('input').focus()
+          }
         } else {
           $('end-card')[0].setStuff()
           $('end-card').addClass('endcardin')
@@ -240,9 +259,11 @@ class endCard extends HTMLElement {
   display: flex;
   flex-direction: column;
   align-items: center;
-}</style>`)
+}
+${buttonStyle('#gobackbtn')}</style>`)
     var content = $(`<div id="fulldiv">
 <h2 id="points">You got some points!<h2>
+<a id='gobackbtn' href='/user/${localStorage.getItem('uname')}'>Go back</a>
 </div>`)
     shadow.appendChild(styles[0])
     shadow.appendChild(content[0])
