@@ -20,6 +20,9 @@
     bottom: 0px;
   }
 }
+#contentdiv {
+  width: calc(var(--goaldivsize) + 90px);
+}
 #goaldiv {
   background: linear-gradient(white, white) padding-box, conic-gradient(#ff5722 var(--goalportion), rgba(125,125,125,0.3) 0) border-box;
   border-radius: 50em;
@@ -60,10 +63,12 @@
   top: 200px;
   left: 130px;
 }
+#contentdiv {
+  margin-right: 80px;
+}
 #avatararea {
   display: grid;
   justify-items: center;
-  margin-left: 80px;
 }
 #avatar {
   width: 150px;
@@ -117,5 +122,11 @@ body {
 }
 a, #points {
   display: block;
+  margin: 5px;
+}
+#actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin: 5px;
 }
