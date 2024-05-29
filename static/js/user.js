@@ -62,10 +62,10 @@ if(sameuser) {
   for(var i of data['items']) {
     $('#' + avatarparts[i].type).append($(`<option value="${i}">${i}</option>`))
   }
+  $('#avatarselect > select').append($(`<option value="">None</option>`))
   for(var i in data['avatar']) {
     $('#' + i).children(`[value="${data['avatar'][i]}"]`).attr('selected', 'true')
   }
-  $('#avatarselect > select').append($(`<option value="">None</option>`))
   $('#avatarselect > select').on('change', function(ev) {
     if(ev.target.id == 'accesory') {
       userdata['avatar']['accesory'][0] = ev.target.value
