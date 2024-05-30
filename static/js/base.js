@@ -69,11 +69,14 @@ var avatarparts = {
   'bracelet':{
     type:'accesory',
     content:{
-      right:``,
-      left:`<path d="m137,142 l-19,17" fill="none" stroke="yellow" stroke-width="4px">`
+      right:`<path d="m 8 139 l 17 20" fill="none" stroke="rgb(255,170,0)" stroke-width="4px">`,
+      left:`<path d="m137,142 l-19,17" fill="none" stroke="rgb(255,170,0)" stroke-width="4px">`
     },
     cost:10,
-    viewBox:''
+    viewBox:{
+      right:`0 130 30 30`,
+      left:`120 130 30 30`
+    }
   }
 }
 function buttonStyle(sel) {
