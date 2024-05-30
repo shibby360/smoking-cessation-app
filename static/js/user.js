@@ -62,13 +62,20 @@ if(sameuser) {
   for(var i of data['items']) {
     $('#' + avatarparts[i].type).append($(`<option value="${i}">${i}</option>`))
   }
-  $('#avatarselect > select').append($(`<option value="">None</option>`))
+  $('#avatarselect > select:not(#placement)').append($(`<option value="">None</option>`))
   for(var i in data['avatar']) {
     $('#' + i).children(`[value="${data['avatar'][i]}"]`).attr('selected', 'true')
+    if(i == 'accesory') {
+      $('#' + i).children(`[value="${data['avatar'][i][0]}"]`).attr('selected', 'true')
+      $('#placement').children(`[value="${data['avatar'][i][1]}"]`).attr('selected', 'true')
+    }
   }
   $('#avatarselect > select').on('change', function(ev) {
     if(ev.target.id == 'accesory') {
       userdata['avatar']['accesory'][0] = ev.target.value
+    } 
+    else if(ev.target.id == 'placement') {
+      userdata['avatar']['accesory'][1] = ev.target.value
     } else {
       userdata['avatar'][ev.target.id] = ev.target.value
     }
@@ -89,7 +96,7 @@ function drawavatar() {
     if(j == '') { continue }
     if(typeof j == 'object') {
       if(j[0] == '') { continue }
-      $('#avatar').html($('#avatar').html() + avatarparts[j[0]][j[1]])
+      $('#avatar').html($('#avatar').html() + avatarparts[j[0]].content[j[1]])
       continue
     }
     $('#avatar').html($('#avatar').html() + avatarparts[j].content)
