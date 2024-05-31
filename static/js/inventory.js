@@ -49,7 +49,16 @@ class InventoryItem extends HTMLElement {
     this.data = avatarparts[this.getAttribute('iname')]
     content.find('#deleteAct').click(function(ev) {
       userdata.items.splice(userdata.items.indexOf(self.getAttribute('iname')),1)
-      userdata.points += sel.data.cost
+      if(self.data.type == 'accesory') {
+        if(userdata.avatar[self.data.type][0] == self.getAttribute('iname')) {
+          userdata.avatar[self.data.type][0] = ''
+        }
+      } else {
+        if(userdata.avatar[self.data.type] == self.getAttribute('iname')) {
+          userdata.avatar[self.data.type] = ''
+        }
+      }
+      userdata.points += self.data.cost
       savedata()
       drawItems()
     })
