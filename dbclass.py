@@ -1,4 +1,5 @@
 import requests, json, os
+raise Exception(os.environ['KV_REST_API_URL'])
 class db_:
   def __init__(self):
     return
