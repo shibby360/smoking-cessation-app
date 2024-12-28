@@ -15,27 +15,47 @@ if(localStorage.getItem('uname') !== location.pathname.split('/').at(-1)) {
 }
 var sameuser = localStorage.getItem('uname') === location.pathname.split('/').at(-1)
 document.documentElement.style.setProperty('--goalportion', ((data['days w/o smoking']/data['goal'])*360) + 'deg')
+$('#contentdiv').css('width', ($('#contentdiv').width() + 80)+'px')
 if(sameuser) {
   userdata = data
   var oglogin = new Date(userdata['last logged in'])
   var nowlogin = new Date(Date.now())
   if(oglogin.toDateString() != nowlogin.toDateString()) {
-    userdata['days w/o smoking'] += 1
-    if(userdata['days w/o smoking'] >= userdata['longest streak']) {
-      userdata['longest streak'] = userdata['days w/o smoking']
+    $('#questiondiv').css('display', 'grid')
+    $('body *').css('opacity', '.5')
+    for(var i of ['goalrow', 'contentdiv', 'questiondiv', 'questiondiv > *']) {
+      $('#'+i).css('opacity', '1')
     }
-    var pregoal = ((data['days w/o smoking']-1)/data['goal'])*360
-    var endgoal = (data['days w/o smoking']/data['goal'])*360
-    var goalinc = (endgoal - pregoal)/400
-    /* idk why its 400 but it works 💀 */
-    var movegoal = setInterval(function(params) {
-      pregoal += goalinc
-      document.documentElement.style.setProperty('--goalportion', pregoal + 'deg')
-    }, 1)
-    setTimeout(function() {
-      clearInterval(movegoal)
-    }, 2000)
-    $('#num').css('animation', 'numin 2s')
+    $('#nobtn').on('click', function() {
+      userdata['days w/o smoking'] += 1
+      if(userdata['days w/o smoking'] >= userdata['longest streak']) {
+        userdata['longest streak'] = userdata['days w/o smoking']
+      }
+      var pregoal = ((data['days w/o smoking']-1)/data['goal'])*360
+      var endgoal = (data['days w/o smoking']/data['goal'])*360
+      var goalinc = (endgoal - pregoal)/400
+      /* idk why its 400 but it works 💀 */
+      var movegoal = setInterval(function(params) {
+        pregoal += goalinc
+        document.documentElement.style.setProperty('--goalportion', pregoal + 'deg')
+      }, 1)
+      setTimeout(function() {
+        clearInterval(movegoal)
+      }, 2000)
+      $('#num').css('animation', 'numin 2s')
+    })
+    $('#yesbtn').on('click', function() {
+      userdata['days w/o smoking'] = 0
+      userdata['goal'] = 10
+      $('#num').text(userdata['days w/o smoking'])
+      $('#goal').html('Days without smoking<br>Goal: ' + userdata['goal'])
+      document.documentElement.style.setProperty('--goalportion', '0deg')
+      savedata()
+    })
+    $('.smokebtns').on('click', function() {
+      $('#questiondiv').css('display', 'none')
+      $('body *').css('opacity', '1')
+    })
   }
   userdata['last logged in'] = Date.now()
   savedata()
@@ -115,12 +135,6 @@ var actionButtons = {
     background:'🚬',
     label:'I smoked today :(',
     action:function() {
-      userdata['days w/o smoking'] = 0
-      userdata['goal'] = 10
-      $('#num').text(userdata['days w/o smoking'])
-      $('#goal').html('Days without smoking<br>Goal: ' + userdata['goal'])
-      document.documentElement.style.setProperty('--goalportion', '0deg')
-      savedata()
     }
   },
   play:{

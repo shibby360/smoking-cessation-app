@@ -130,3 +130,17 @@ a, #points {
   gap: 10px;
   margin: 5px;
 }
+#goalrow {
+  display: flex;
+  gap: 5px;
+}
+#questiondiv {
+  display: none; /* grid */
+}
+#questiondiv button {
+  cursor: pointer;
+}
+#smokequestion {
+  grid-column: 1 / 3;
+  text-align: center;
+}

@@ -6,10 +6,17 @@
 {% block body %}
 <div id='contentdiv'>
 <h1 id='uname'>{{ uname }}</h1>
+<div id='goalrow'>
 <div id='goaldiv'>
   <p id='num'>{{ data['days w/o smoking'] }}</p>
   <p id='onum'>{{ data['days w/o smoking'] }}</p>
   <p id='goal'>Days without smoking<br>Next goal: {{ data['goal'] }}</p>
+</div>
+<div id='questiondiv'>
+  <p id='smokequestion'>Did you smoke today?</p>
+  <button id='yesbtn' class='smokebtns'>Yes</button>
+  <button id='nobtn' class='smokebtns'>No</button>
+</div>
 </div>
 <p style="display: none" id='data'>{{ data }}</p>
 <p id='points'>Points: {{ data['points'] }}</p>
@@ -22,7 +29,7 @@
 </div>
 <div id='actions' class='onlyloggedin'>
 <!-- <action-button type='nosmoke'></action-button> -->
-<action-button type='didsmoke'></action-button>
+<!-- <action-button type='didsmoke'></action-button> -->
 <action-button type='play' title='Answer questions and get points!'></action-button>
 <action-button type='shop' title='Use your points and buy items for your avatar!'></action-button>
 <action-button type='inv' title='See and manage your items!'></action-button>
